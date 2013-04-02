@@ -189,3 +189,41 @@ snippet frac
 	\frac{${1:num}}{${2:denom}}
 snippet sum
 	\sum^{${1:n}}_{${2:i=1}}{${3}}
+snippet graphics
+	\begin{figure}[h]
+	    \centering
+	    \includegraphics[width=0.8\textwidth]{${1}}
+	    \caption{${2}}
+	    \label{fig:${3}}
+	\end{figure}
+snippet frac
+	\frac{${1}}{${2}}${3}
+snippet frame
+	\begin{frame}
+	    \frametitle{${1}}${2}
+	\end{frame}
+snippet columns
+	\begin{columns}
+	    \begin{column}[l]{0.5\textwidth}
+	    ${1}
+	    \end{column}
+	    \begin{column}[l]{0.5\textwidth}
+	    \end{column}
+	\end{columns}
+snippet tabular
+	\begin{tabular}{p{.30\linewidth} p{.20\linewidth} p{.20\linewidth} }
+	    \toprule
+	    \addlinespace
+	    Conjunto               & Sujetos   & Imagenes \\
+	    \cmidrule(l){1-1} \cmidrule(lr){2-2} \cmidrule(l){3-3}
+	    \addlinespace
+	    Training               & 429       & 762      \\
+	    \addlinespace
+	    Galeria fa             & 1196      & 1196     \\
+	    \addlinespace
+	    Probe fb               & 1195      & 1195     \\
+	    Probe fc               & 194       & 194      \\
+	    Probe dup1             & 722       & 243      \\
+	    Probe dup2             & 234       & 75       \\
+	    \bottomrule
+	\end{tabular}

@@ -3,6 +3,8 @@
 snippet array
 	std::array<${1:T}, ${2:N}> ${3};${4}
 # std::vector
+snippet vec
+	std::vector<${1}>
 snippet vector
 	std::vector<${1:T}> ${2};${3}
 # std::deque
@@ -68,15 +70,15 @@ snippet mu
 ## Class
 # class
 snippet cl
-	class ${1:`Filename('$1', 'name')`} 
-	{
+	class ${1:} {
 	public:
-		$1(${2});
-		~$1();
-
+		$1(${2:});
+		virtual ~$1();
 	private:
-		${3:/* data */}
-	};
+		$1 (const $1& other);
+		$1& operator=(const $1& other);
+		${3}
+	};${4}
 # member function implementation
 snippet mfun
 	${4:void} ${1:`Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
@@ -84,14 +86,18 @@ snippet mfun
 	}
 # namespace
 snippet ns
-	namespace ${1:`Filename('', 'my')`} {
+	namespace ${1}
+	{
 		${2}
-	} /* namespace $1 */
+	}
 ##
 ## Input/Output
 # std::cout
 snippet cout
-	std::cout << ${1} << std::endl;${2}
+	std::cout << ${1}
+# std::cerr
+snippet cerr
+	std::cerr << ${1}
 # std::cin
 snippet cin
 	std::cin >> ${1};${2}
@@ -99,15 +105,18 @@ snippet cin
 ## Iteration
 # for i 
 snippet fori
-	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
-		${4:/* code */}
-	}${5}
-
+	for (${1}::iterator ${2:itr} = ${3:}.begin();
+		${4:$2} != ${5:$3}.end();
+		++${6:$2}) {
+		${7}
+	}${8}
 # foreach
 snippet fore
 	for (${1:auto} ${2:i} : ${3:container}) {
 		${4:/* code */}
 	}${5}
+snippet dbg
+	std::cerr << "${1:} = " << ${2:$1} << std::endl;${3}
 # iterator
 snippet iter
 	for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin(); $4 != $5.end(); ++$4) {
@@ -128,4 +137,59 @@ snippet ld
 snippet lld
 	[${1}](${2}){
 		${3:/* code */}
+	}${4}
+# opencv
+snippet cvm
+	cv::Mat
+snippet cvm_
+	cv::Mat_<${1}> ${2}
+# eigen
+snippet eim
+	Eigen::Matrix
+snippet eim_
+	Eigen::Matrix<${1:type}, ${2:rows}, ${3:cols}> ${4}
+snippet eiv
+	Eigen::Vector
+snippet std
+	std::
+# boost
+snippet b
+	boost::
+snippet boost
+	boost::
+snippet bg
+	begin()
+snippet end
+	end()
+snippet sz
+	size_t
+snippet .
+	::
+snippet pcl
+	pcl::
+snippet pclc
+	pcl::console::print_
+snippet cr
+	"\n"
+snippet using
+	using namespace ${1}
+snippet scast
+	static_cast<${1}>()
+snippet it
+	iterator
+snippet opio
+	std::ostream& operator<<(std::ostream& os, const ${1})${2}
+snippet enum
+	enum ${1:MyEnum} {
+		${2}
+	};${3}
+snippet ositer
+	std::copy(${1:}.begin(), ${2:}.end(), std::ostream_iterator<${3}>(${4:std::cout}, ${5:" "});${6:}
+# boost format
+snippet bformat
+	boost::format("${1:}%1%${2:}")%${3:};${4:}
+# boost foreach
+snippet bfor
+	BOOST_FOREACH(${1}, ${2}) {
+		${3}
 	}${4}

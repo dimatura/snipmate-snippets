@@ -1,15 +1,15 @@
 ## Main
 # main
 snippet main
-	int main(int argc, const char *argv[])
-	{
+	int main(int argc, const char *argv[]) {
 		${1}
 		return 0;
 	}
+snippet Inc
+	#include <${1}>${2}
 # main(void)
 snippet mainn
-	int main(void)
-	{
+	int main(void) {
 		${1}
 		return 0;
 	}
@@ -17,10 +17,10 @@ snippet mainn
 ## Preprocessor 
 # #include <...>
 snippet inc
-	#include <${1:stdio}.h>${2}
+	#include "${1}"${2}
 # #include "..."
-snippet Inc
-	#include "${1:`Filename("$1.h")`}"${2}
+#snippet Inc
+#	#include "${1:`Filename("$1.h")`}"${2}
 # ifndef...define...endif
 snippet ndef
 	#ifndef $1
@@ -42,19 +42,14 @@ snippet #if
 # header include guard
 snippet once
 	#ifndef ${1:`toupper(Filename('$1_H', 'UNTITLED_H'))`}
-
 	#define $1
-
 	${2}
-
 	#endif /* end of include guard: $1 */
 ##
 ## Control Statements
-# if
 snippet if
-	if (${1:/* condition */}) {
-		${2:/* code */}
-	}${3}
+	if (${1}) {
+	}
 # else
 snippet el
 	else {
@@ -232,3 +227,9 @@ snippet gpl
 	 */
 	
 	${2}
+snippet un
+	unsigned
+snippet ass
+	assert (${1});
+snippet assv
+	assert ((${1}) && "${2}");${3}
