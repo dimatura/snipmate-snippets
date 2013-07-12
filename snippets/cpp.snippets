@@ -66,7 +66,7 @@ snippet fr
 # mutable
 snippet mu
 	mutable
-## 
+##
 ## Class
 # class
 snippet cl
@@ -81,8 +81,8 @@ snippet cl
 	};${4}
 # member function implementation
 snippet mfun
-	${4:void} ${1:`Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
-		${5:/* code */}
+	${4:void} ${1:`vim_snippets#Filename('$1', 'ClassName')`}::${2:memberFunction}(${3}) {
+		${5}
 	}
 # namespace
 snippet ns
@@ -103,7 +103,7 @@ snippet cin
 	std::cin >> ${1};${2}
 ##
 ## Iteration
-# for i 
+# for i
 snippet fori
 	for (${1}::iterator ${2:itr} = ${3:}.begin();
 		${4:$2} != ${5:$3}.end();
@@ -113,7 +113,7 @@ snippet fori
 # foreach
 snippet fore
 	for (${1:auto} ${2:i} : ${3:container}) {
-		${4:/* code */}
+		${4}
 	}${5}
 snippet dbg
 	std::cerr << "${1:} = " << ${2:$1} << std::endl;${3}
@@ -132,11 +132,11 @@ snippet itera
 ## Lambdas
 # lamda (one line)
 snippet ld
-	[${1}](${2}){${3:/* code */}}${4}
+	[${1}](${2}){${3}}${4}
 # lambda (multi-line)
 snippet lld
 	[${1}](${2}){
-		${3:/* code */}
+		${3}
 	}${4}
 # opencv
 snippet cvm
